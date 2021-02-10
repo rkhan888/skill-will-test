@@ -18,6 +18,8 @@ import com.skillwilltest.service.StudentService;
 @RequestMapping("/")
 public class StudentController {
 	
+	private static final int AGE = 18;
+	
 	@Autowired
 	private StudentService service;
 	
@@ -37,10 +39,22 @@ public class StudentController {
 		}
 	}
 	
+
+	@GetMapping("/underAgeStudents")
+	public ResponseEntity<List<Student>> underAge() {
+
+		List<Student> students = service.findStudentByAgeLessThanEqual(AGE);
+
+		if(!students.isEmpty()) {
+			return ResponseEntity.ok(students);
+		} else {
+			throw new StudentNotFoundException("No students with age <= " + AGE);
+		}
+	}
 	
-	@GetMapping("/studentAgeLessThan/{age}")
+	@GetMapping("/studentAgeLessThanEqual/{age}")
 	public ResponseEntity<List<Student>> ageLessThan(@PathVariable int age) {
-		List<Student> students = service.findStudentByAgeLessThan(age);
+		List<Student> students = service.findStudentByAgeLessThanEqual(age);
 		
 		if(!students.isEmpty()) {
 			return ResponseEntity.ok(students);

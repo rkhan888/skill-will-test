@@ -22,8 +22,8 @@ public class StudentService {
 		return studentDao.findById(id).orElse(null);		
 	}
 	
-	public List<Student> findStudentByAgeLessThan(int age) {
-		return studentDao.findByAgeLessThan(age);		
+	public List<Student> findStudentByAgeLessThanEqual(int age) {
+		return studentDao.findByAgeLessThanEqual(age);		
 	}
 
 }

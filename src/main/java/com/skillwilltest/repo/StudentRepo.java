@@ -9,6 +9,6 @@ import com.skillwilltest.model.Student;
 
 public interface StudentRepo extends JpaRepository<Student, Integer>{
 	
-	public List<Student> findByAgeLessThan(int age);
+	public List<Student> findByAgeLessThanEqual(int age);
 
 }
