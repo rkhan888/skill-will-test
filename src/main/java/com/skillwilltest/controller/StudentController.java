@@ -15,7 +15,7 @@ import com.skillwilltest.model.Student;
 import com.skillwilltest.service.StudentService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class StudentController {
 	
 	private static final int AGE = 18;
