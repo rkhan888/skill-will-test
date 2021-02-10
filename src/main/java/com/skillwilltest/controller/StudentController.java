@@ -36,5 +36,18 @@ public class StudentController {
 			return ResponseEntity.ok(student);
 		}
 	}
+	
+	
+	@GetMapping("/studentAgeLessThan/{age}")
+	public ResponseEntity<List<Student>> ageLessThan(@PathVariable int age) {
+		List<Student> students = service.findStudentByAgeLessThan(age);
+		
+		if(!students.isEmpty()) {
+			return ResponseEntity.ok(students);
+		} else {
+			throw new StudentNotFoundException("No students with age less than " + age);
+		}
+		
+	}
 
 }
